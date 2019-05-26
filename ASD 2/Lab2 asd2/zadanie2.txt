@@ -1,0 +1,52 @@
+
+Dany jest pewien zbiór napisów (mo¿na przej¹æ, ¿e s¹ to ci¹gi koduj¹ce).
+Dany jest równie¿ jeden dodatkowy napis (nazwijmy go: tekst).
+
+Zadanie.
+
+1) Obliczyæ na ile sposobów podany tekst mo¿e byæ zakodowany przy pomocy
+   zadanego zbioru ci¹gów koduj¹cych
+   Wymagana z³o¿onoœæ czasowa nie gorsza ni¿ N*K
+   (gdzie N oznacza d³ugoœæ tekstu, a K liczbê ci¹gów koduj¹cych)
+2) Podaæ wszystkie sposoby takiego kodowania
+   Wymagana z³o¿onoœæ czasowa: max(N*K,sumaryczna_liczba_u¿ytych_kodów)
+
+Uwaga: Przy wyznaczaniu z³o¿onoœci przyjmujemy, ¿e porównanie ci¹gu koduj¹cego
+z fragmentem tekstu (a tak¿e ewentualnie inne potrzebne operacje na napisach)
+maj¹ koszt sta³y (niezale¿ny od d³ugoœci napisów).
+
+Przyk³ad 1.
+Ci¹gi koduj¹ce: 'a' , 'abc' , 'ab' , 'ca'
+Tekst: 'abca'
+OdpowiedŸ:
+mo¿liwe s¹ 2 sposoby zakodowania tekstu
+('abc','a')    // zapisane jako tablica int[2]{1,0}
+('ab','ca')    // zapisane jako tablica int[2]{2,3}
+
+Przyk³ad 2.
+Ci¹gi koduj¹ce: 'a' , 'b' , 'c' , 'ab' , 'ca' , 'abca'
+Tekst: 'abca'
+OdpowiedŸ:
+mo¿liwych jest 5 sposobów zakodowania tekstu
+('a','b','c','a')  // tablica int[4]{0,1,2,0}
+('a','b','ca')     // tablica int[3]{0,1,4}
+('ab','c','a')     // tablica int[3]{3,2,0}
+('ab','ca')        // tablica int[2]{3,4}
+('abca')           // tablica int[1]{5}
+
+Innymi s³owy nale¿y policzyæ na ile sposobów tekst mo¿na przedstawiæ
+jako konkatenacjê ci¹gów koduj¹cych.
+
+Uwagi:
+1) Zak³adamy, ¿e ka¿dy z ci¹gów koduj¹cych jest inny, jednak mo¿e siê zdarzyæ,
+   ¿e ci¹g koduj¹cy mo¿na zakodowaæ przy pomocy pozosta³ych ci¹gów koduj¹cych.
+
+Wskazówki
+1) Do rozwi¹zania pierwszej czêœci zadania wystarczy 1-wymiarowa tablica pomocnicza
+   (tab[j] oznacza na ile sposobów mo¿na zakodowaæ pocz¹tkowy fragment tekstu d³ugoœci j+1)
+2) Organizacja pêtli wynika z ¿¹danej z³o¿onoœci
+
+Punktacja
+- wyznaczenie liczby kodowañ                  -  2.0 pkt
+- wyznaczenie wszystkich sposobów kodowania   -  2.0 pkt
+Podana punktacja obowi¹zuje dla rozwi¹zañ spe³niaj¹cych wymagania dotycz¹ce z³o¿onoœci
