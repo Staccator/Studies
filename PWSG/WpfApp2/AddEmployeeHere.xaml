@@ -1,0 +1,89 @@
+﻿<Window x:Class="WpfApp2.AddEmployee" 
+        Height="500" Width="500"    DataContext="{Binding RelativeSource={RelativeSource Self}  ,   Path=AddedEmployee  }"
+        ResizeMode="CanMinimize"   Title="Add new Employee" Topmost="True"
+        WindowStartupLocation="CenterScreen" FontSize="14" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:WpfApp2"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        >
+    <Window.Resources>
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="MinHeight" Value="30" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*" />
+            <ColumnDefinition Width="58.288" />
+            <ColumnDefinition Width="9.88"/>
+            <ColumnDefinition Width="15.468"/>
+            <ColumnDefinition Width="22"/>
+            <ColumnDefinition Width="231*" />
+            <ColumnDefinition Width="79*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="First Name:" VerticalAlignment="Center" Grid.ColumnSpan="4" Margin="0,8" Height="19" />
+        <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Text="Last Name:" Grid.ColumnSpan="4" Margin="0,8" Height="19" />
+        <TextBlock VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Text="Sex:" Grid.RowSpan="2" Grid.ColumnSpan="4" Margin="0,26,0,25" Height="19" />
+        <TextBlock VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" Text="Birth Date:" Grid.ColumnSpan="4" Margin="0,8" Height="19" />
+        <TextBlock VerticalAlignment="Center" Grid.Row="6" Grid.Column="1" Text="Birth Country:" Grid.ColumnSpan="4" Margin="0,8" Height="19" />
+        <TextBlock VerticalAlignment="Center" Grid.Row="7" Grid.Column="1" Text="Salary:" Grid.ColumnSpan="4" Margin="0,8" Height="19" />
+        <TextBlock VerticalAlignment="Center" Grid.Row="8" Grid.Column="1" Text="Salary Currency:" Grid.ColumnSpan="4" Margin="0,8" Height="19" />
+        <TextBlock VerticalAlignment="Center" Grid.Row="9" Grid.Column="1" Text="Company Role:" Grid.ColumnSpan="4" Margin="0,8" Height="19" />
+        <TextBox Grid.Row="1" Grid.Column="5" MaxLength="50" Text="{Binding FirstName}" MaxHeight="18" VerticalAlignment="Center" Margin="0,8,0,9" Height="18" />
+        <TextBox Grid.Row="2" Grid.Column="5" MaxLength="50" Text="{Binding LastName}" MaxHeight="18" VerticalAlignment="Center" Margin="0,9,0,8" Height="18" />
+        <StackPanel Grid.Row="3" Grid.Column="5" Grid.RowSpan="2" VerticalAlignment="Center" Height="70">
+            <RadioButton Height="35" VerticalContentAlignment="Center" GroupName="Sex" Content="Male" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:AddEmployee}}, Path=IsMale}" />
+            <RadioButton Height="35" VerticalContentAlignment="Center" GroupName="Sex" Content="Female" />
+        </StackPanel>
+        <DatePicker Grid.Row="5" Grid.Column="5" SelectedDate="{Binding BirthDate}" Name="DatePicker"  VerticalAlignment="Center" Margin="0,4" Height="27"  />
+        <TextBox Grid.Row="6" Grid.Column="5" MaxLength="100" Text="{Binding BirthCountry}" MaxHeight="18" VerticalAlignment="Center" Margin="0,9,0,8" Height="18" />
+        <TextBox Grid.Row="7" Grid.Column="5" MaxHeight="21" VerticalAlignment="Center" Margin="0,8,0,9" Height="18">
+            <TextBox.Text>
+                <Binding Path="Salary" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local:Checker />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <TextBox.ToolTip>
+                <Binding Path="(Validation.Errors)[0].ErrorContent" RelativeSource="{RelativeSource Mode=Self}" />
+            </TextBox.ToolTip>
+        </TextBox>
+        <ComboBox  SelectedIndex="{Binding Curr}" Grid.Row="8" Grid.Column="5"    Margin="0,3,0,3" VerticalContentAlignment="Center">
+            <ComboBox.ItemsSource>
+                <CompositeCollection>
+                    <CollectionContainer Collection="{Binding Source={local:EnumBindingSource {x:Type local:Currency }}}" />
+                </CompositeCollection>
+            </ComboBox.ItemsSource>
+        </ComboBox>
+        <ComboBox  SelectedIndex="{Binding role}" Grid.Row="9" Grid.Column="5"   Margin="0,3,0,3" VerticalContentAlignment="Center">
+            <ComboBox.ItemsSource>
+                <CompositeCollection>
+                    <CollectionContainer Collection="{Binding Source={local:EnumBindingSource {x:Type local:Role }}}" />
+                </CompositeCollection>
+            </ComboBox.ItemsSource>
+        </ComboBox>
+        <Button Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="5" Content="Add" Click="Add_OnClick" />
+    </Grid>
+</Window>
