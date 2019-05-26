@@ -1,0 +1,58 @@
+Dany jest zestaw trzech klas tworz¹cych sieæ spo³ecznoœciow¹: sieæ, grupa, osoba.
+Sieæ sk³ada siê z nazwy i kilku grup. Grupa ma swoj¹ nazwê, a tak¿e ludzi do niej nale¿¹cych (na cz³owieka sk³ada siê
+jego id, imiê, nazwisko i œrednia na studiach). Co wiêcej, ludzie mog¹ byæ miêdzy sob¹
+znajomymi. (W klasie Person mamy zbiór, gdzie elementami s¹ id  znajomych).
+
+Etap 1 (2p.)
+
+Czêœæ 1
+Zdefiniowaæ wczytywanie sieci spo³ecznoœciowej z folderu. Struktura folderów jest nastêpuj¹ca: mamy jeden folder,
+który przechowuje ca³¹ sieæ spo³ecznoœciow¹. Nazwa folderu to nazwa sieci. W tym¿e folderze mamy kilka folderów,
+gdzie ka¿dy folder reprezentuje jedn¹ grupê ludzi. Nazwa takiego folderu to nazwa grupy. W samym
+folderze reprezentuj¹cym grupê mamy pliki tekstowe o dowolnych nazwach oraz jeden plik o nazwie "relacje.txt".
+
+W pliku relacje.txt mamy dowoln¹ liczbê wierszy, gdzie w ka¿dym wierszu mamy dwie liczby ca³kowite oddzielone spacj¹.
+Te liczby to id dwóch osób, które pozostaj¹ ze sob¹ w relacji (s¹ znajomymi).
+
+W pozosta³ych plikach mamy po cztery wiersze: pierwszy wiersz to id, drugi to imiê, trzeci to nazwisko,
+a czwarty to œrednia ocen.
+
+Nale¿y uzupe³niæ metody ReadFromFolder i ReadFromFile tak,
+aby zwrócona klasa SocialNetwork reprezentowa³a dok³adnie tak¹ sieæ spo³ecznoœciow¹, jak w folderze.
+
+Czêœæ 2
+Zdefiniowaæ metodê ToString. Powinna dzia³aæ tak, aby zwróciæ taki sam output, jak w pliku przyk³adowym.
+
+Etap 2 (0.5p.)
+
+Serializacja binarna - uzupe³niæ metody SerializeBinary i DeserializeBinary w klasie NetworkSerializers.
+Serializacja powinna odbywaæ siê z/do pliku, do którego œcie¿ka jest podana jako argument path.
+
+Etap 3 (1p.)
+
+Serializacja SOAP - uzupe³niæ metody SerializeSOAP i DeserializeSOAP w klasie NetworkSerializers.
+Serializacja powinna odbywaæ siê z/do pliku, do którego œcie¿ka jest podana jako argument path.
+
+Nale¿y zwróciæ uwagê na ograniczenia serializatora SOAP i zaproponowaæ ich rozwi¹zanie.
+
+Etap 4(1.5p.)
+
+Tym razem bêdziemy chcieli sami zapisaæ sieæ spo³ecznoœciow¹ w takiej samej strukturze folderów,
+jak ta, z której wczytywaliœmy w etapie 1. W tym celu nale¿y uzupe³niæ metody WriteToFolder.
+Narzucamy, ¿e pliki z poszczególnymi osobami powinny nazywaæ siê kolejnymi liczbami ca³kowitymi, czyli 1.txt, 2.txt, ... .
+Sam plik ze znajomymi powinien oczywiœcie nazywaæ siê "relacje.txt". Pozwalamy, aby w tym¿e pliku znajomoœci powtarza³y siê,
+czyli pojawi³ siê zarówno wiersz "1 4", jak i "4 1". Nazwy folderów powinny byæ zgodne z nazwami sieci/grup.
+
+Dodatkowe za³o¿enia: ten folder, do którego dostajemy œcie¿kê jako argument, ma byæ folderem nadrzêdnym do folderu
+z sieci¹. Czyli, gdy dostajemy argument "newFolder", a chcemy zapisaæ sieæ o nazwie "MiNI", to tak naprawdê
+powinniœmy utworzyæ folder "newFolder/MiNI" i w nim mieæ foldery reprezentuj¹ce poszczególne grupy.
+
+Co wiêcej, jeœli folder "newFolder/MiNI" istnieje, to nie przejmujemy siê tym i zapisujemy do niego. Jeœli nie,
+to go tworzymy. To samo tyczy siê poszczególnych grup. Same pliki powinny byæ otwierane tak, ¿e jeœli
+istnia³ ju¿ plik o tej samej nazwie, to jest on nadpisywany.
+
+
+UWAGI
+1) folder "MiNI" wgraæ do katalogu Debug (tam gdzie VS generuje pliki exe)
+2) Mo¿na modyfikowaæ przygotowane klasy np. dopisuj¹c odpowiednie atrybuty
+3) Mo¿e byæ potrzebne dodanie do projektu odpowiednich referencji

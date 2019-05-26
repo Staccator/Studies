@@ -1,0 +1,52 @@
+
+PKS Jatne chce uruchomiæ nowe kursy autobusów. Zarz¹d przygotowa³ plan po³¹czeñ w postaci grafu
+skierowanego (wierzcho³ki oznaczaj¹ miejscowoœci, a krawêdzie oznaczaj¹ bezpoœrednie po³¹czenia,
+jakie nale¿y zrealizowaæ).
+
+Plan tras musi spe³niaæ trzy warunki:
+1. Kurs autobusu powinien zaczynaæ siê i koñczyæ w tym samym miejscu. 
+2. Autobusy realizuj¹ tylko po³¹czenia uwzglêdnione w planie, tj. u¿ywaj¹ tylko krawêdzi z naszego grafu.
+3. Ponadto ze wzglêdów ekonomicznych ka¿de bezpoœrednie (skierowane) po³¹czenie powinno
+byæ zrealizowane dok³adnie raz (czyli ka¿d¹ sjierowan¹ karawêd¿ grafu nale¿y "wykorzystaæ" dok³adnie raz).
+
+Firma rozwa¿a dwa warianty biznesplanu.
+
+1. Dostajemy kredyt na zakup du¿ej liczby autobusów i uruchamiamy wiele krótkich kursów.
+Wtedy trasa ka¿dego autobusu jest (skierowanym) cyklem, w którym nie powtarzaj¹ siê wierzcho³ki.
+Zadanie polega na takim zaplanowaniu tras, ¿eby ka¿da by³a cyklem (bez powtarzania wierzcho³ków), przy 
+spe³nieniu warunków 1,2,3, lub stwierdzeniu, ¿e jest to niemo¿liwe.
+Jako krok poœredni, zacznijmy od metody, która znajduje jakikolwiek cykl w grafie skierowanym lub stwierdza,
+¿e takiego cyklu nie ma.
+Uwaga: sformu³owanie "uruchamiamy wiele krótkich kursów" to tylko element historyjki
+       - algorytmy wyznaczania najkrótszych œcie¿ek do niczego siê w tym zadaniu nie przydadz¹!
+
+2. Nie dostajemy kredytu, wiêc mamy ma³o autobusów i uruchamiamy ma³o d³ugich kursów.
+W tym wariancie dopuszczamy powtarzanie siê wierzcho³ków na trasie jednego autobusu, czyli ka¿da trasa
+jest drog¹ zamkniêt¹.
+Zadanie polega na znalezieniu najmniejszej mo¿liwej liczby tras, z których ka¿da jest drog¹ zamkniêt¹ i spe³nione
+s¹ warunki 1,2,3 (lub stwierdzeniu, ¿e takie zaplanowanie tras jest niemo¿liwe).
+
+
+Punktacja:
+- metoda znajduj¹ca jakikolwiek cykl skierowany lub stwierdzaj¹ca, ¿e go nie ma  -  1 pkt
+- znalezienie dopuszczalnego planu po³¹czeñ w wariancie 1.                       -  1 pkt
+- znalezienie optymalnego planu po³¹czeñ w wariancie 2.                          -  2 pkt
+
+
+Uwagi:
+- jaki problem grafowy chcemy w³aœciwie rozwi¹zaæ?
+- w rozwi¹zaniu wariantu 2 wykorzystaj rozwi¹zanie wariantu 1.
+- ¿adna z metod nie mo¿e modyfikowaæ grafu wejœciowego!
+
+Wartoœæ zwracana:
+- W obu wariantach nale¿y zwróciæ tablicê tablic, z których ka¿da reprezentuje kurs jednego autobusu.
+  Wariant pierwszy:
+    Jeœli autobus ma wystartowaæ w mieœcie 1, potem pojechaæ do miasta 2, potem do miasta 3, a potem wróciæ do 1,
+    to taki kurs jest reprezentowany przez tablicê [1,2,3] (nie wpisujemy ponownie 1).
+  Wariant drugi:
+    Jeœli autobus ma wystartowaæ w mieœcie 1, potem pojechaæ do miasta 2, potem do miasta 3,
+    potem wróciæ do miasta 1, nastepnie pojechaæ dalej do miasta 4, potem do miasta 5 i zakoñczyæ kurs w mieœcie 1,
+    to taki kurs jest reprezentowany przez tablicê [1,2,3,1,4,5] (nie wpisujemy koñcowego 1, ale poœrednie wpisujemy).
+- Jeœli nie ma rozwi¹zania, nale¿y zwróciæ null
+- mo¿na za³o¿yæ, ¿e w planie jest co najmniej jedno po³¹czenie do zrealizowania, tj. graf ma co najmniej
+  jedn¹ krawêdŸ

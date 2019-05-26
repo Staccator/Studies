@@ -1,0 +1,39 @@
+Zadanie składa się z dwóch etapów. Dokładne polecenia, co należy zrobić, znajdują się w Mainie.
+W tym pliku znajduje się jedynie zarys poszczególnych etapów i opis "bazy danych".
+
+W prawie kazdym etapie nalezy stworzyc nowa klase anonimowa, ktora zawiera jedynie te
+pola, ktore są potrzebne w danym etapie. Pola te należy wywnioskować patrząc na argumenty
+podawane do Console.WriteLine przy wypisywaniu wyników danego zapytania.
+
+Każdy etap jest punktowany po 0.5p, poza ostatnim, punktowanym na 1p.
+
+1. Etap wstępny,  aby jedynie zapoznać się z LINQ. W tym etapie wszystkie polecenia
+należy wykonać w notacji kropkowej.
+
+2. Etap drugi przypomina zapytania do bazy danych. Wszystkie elementy są przechowywane
+na listach, jednak należy myśleć w ten sposób, że każda lista to osobna tabela w bazie danych.
+Polecenia w tym etapie należy wykonywać używając zwykłej notacji.
+
+OPIS BAZY DANYCH DO DRUGIEGO ETAPU
+
+Baza składa się z 4 tabel. Pierwsze dwie tabele opisują bazę danych dziekanatu.
+Pierwsza z nich opisuje studentów. Druga opisuje ich oceny. Połączenie pomiędzy
+nimi polega na tym, że każdy student ma swój numer indeksu (pole IndexNo),
+a każda ocena jest przyporządkowana do pewnego numeru indeksu (także pole IndexNo).
+
+Kolejne dwie tabele opisują bazę danych urzędu gminy. Zawiera ona informacje o
+obywatelach. Pierwsza tabela zawiera podstawowe informacje o obywatelu: czy zapłacił
+podatki, czy odbył służbę wojskową, ile zarabia itd. Druga tabela, to numery telefoniczne
+obywateli (każdy obywatel może mieć wiele numerów telefonu, choć jeden numer może
+należeć jedynie do jednego obywatela). Połączenie numerów telefonicznych z obywatelem
+odbywa się poprzez pole PESEL.
+
+Co więcej, PESEL umożliwia połączenie tabeli studentów z obywatelami (osoba o tym samym
+PESELu tu i tu to ta sama osoba).
+
+Niestety, w wyniku bałaganu w sektorze biurokracji, nie wszyscy studenci znajdują
+się w bazie danych urzędu gminy. Poza tym nie wszyscy obywatele znajdują się w bazie
+danych dziekanatu (nie każdy obywatel jest studentem).
+
+W bazie przyjęto konwencję, że gdy zmienna Gender przyjmuje wartość true, mamy do czynienia
+z osobą płci męskiej, a w przeciwnym wypadku z osobą płci żeńskiej.

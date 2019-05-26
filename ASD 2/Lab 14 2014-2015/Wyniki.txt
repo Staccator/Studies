@@ -1,0 +1,28 @@
+==== Etap pierwszy ====
+{ Title = Hobbit, Year = 1937 }
+{ Title = The Fellowship of the Ring, Year = 1954 }
+{ Title = The Two Towers, Year = 1954 }
+{ Title = Thw Return of the King, Year = 1955 }
+{ Title = Pro C# 2010 and the .NET 4 Platform, Year = 2010 }
+{ Title = Pro VB 2010 and the .NET 4.0 Platform, Year = 2010 }
+{ Title = COM and .NET Interoperability, Year = 2002 }
+{ Title = Remade, Year = 2011 }
+{ Title = Zodiac, Year = 1988 }
+{ Title = Anathem, Year = 2008 }
+
+==== Etap drugi ====
+Pro C# 2010 and the .NET 4 Platform
+Pro VB 2010 and the .NET 4.0 Platform
+COM and .NET Interoperability
+
+==== Etap trzeci ====
+{ Id = 1, Name = Fantasy, Sum = 1457 }
+{ Id = 2, Name = Science fiction, Sum = 2267 }
+{ Id = 3, Name = Textbook, Sum = 4368 }
+
+==== Etap czwarty ====
+{ FirstName = John Ronald Reuel, LastName = Tolkien }
+{ FirstName = Neal, LastName = Stephenson }
+{ FirstName = Andrew, LastName = Troelsen }
+
+Press any key to continue . . .
